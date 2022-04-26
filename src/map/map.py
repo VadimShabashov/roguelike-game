@@ -97,7 +97,7 @@ class Map:
 
     def save_map(self):
         dim_x, dim_y = self.tiling.get_dimensions()
-        with open("saved_maps/map.json", 'w+') as file:
+        with open("src/saved_maps/map.json", 'w+') as file:
             json.dump({"board_width": dim_x,
                        "board_height": dim_y,
                        "wall_cells": self.tiling.get_non_wall_cells().tolist()},
@@ -105,7 +105,7 @@ class Map:
 
     def load_map(self):
         dim_x, dim_y = self.tiling.get_dimensions()
-        with open("saved_maps/map.json", 'r') as file:
+        with open("src/saved_maps/map.json", 'r') as file:
             data = json.load(file)
         if (dim_x == data["board_width"]) and (dim_y == data["board_height"]):
             self.indices_to_matrix(data["wall_cells"])
